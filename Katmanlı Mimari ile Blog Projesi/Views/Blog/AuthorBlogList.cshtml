@@ -1,0 +1,70 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+@{
+    ViewBag.Title = "AuthorBlogList";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@{ string color = "";}
+@{ string durum = "";}
+@{ int puan = 1;}
+<br />
+<h2>Yazarın Blog Listesi</h2>
+<br />
+<div class="card">
+
+    <div class="card-body p-0">
+        <table class="table table-condensed projects">
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 5%">#</th>
+                    <th scope="col" style="width: 15%"> Blog Başlığı</th>
+                    <th scope="col" style="width: 20%" class="text-center">Beğeni Oranı</th>
+                    <th scope="col" style="width: 10%" class="text-center"> Tarih </th>
+                    <th scope="col" style="width: 5%" class="text-center"> Durum </th>
+                    <th scope="col" style="width: 15%" class="text-center"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    puan = item.BlogRating * 10;
+
+                    if (puan >= 75)
+                    {
+                        color = "badge bg-success";
+                        durum = "Popüler";
+                    }
+                    if (puan >= 60 && puan <= 74)
+                    {
+                        color = "badge bg-info";
+                        durum = "Başarılı";
+                    }
+                    if (puan <= 59)
+                    {
+                        color = "badge bg-danger";
+                        durum = "Vasat";
+                    }
+                    <tr>
+                        <th scope="row">@item.BlogID.</th>
+                        <td>  <a>  @item.BlogTitle  </a> <br />  <small>     </small>  </td>
+                        <td class="project_progress">
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-green" role="progressbar" aria-volumenow="@puan" aria-volumemin="0" aria-volumemax="10" style="width: @puan%"></div>
+                            </div>
+                            <small> Beğeni Oranı: @puan%   </small>
+                        </td>
+                        <td class="project-state"> @(((DateTime)item.BlogDate).ToString("dd MMM yyyy"))</td>
+                        <td class="project-state"> <span class="@color">@durum</span></td>
+                        <td class="project-actions text-right">
+                            <a href="/Blog/BlogDetails/@item.BlogID" class="btn btn-outline-primary btn-sm"><i class="fas fa-folder"></i> Görüntüle</a>
+                            <a href="/User/UpdateBlog/@item.BlogID" class="btn btn-outline-success btn-sm"><i class="fas fa-pencil-alt"></i> Güncelle</a>
+                            <a href="/Blog/GetCommentByBlog/@item.BlogID" class="btn btn-outline-dark btn-sm"><i class="fas fa-comment"></i> Yorumlar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<a href="/Blog/AddBlog" class="btn btn-outline-info btn-sm"><i class="fas fa-plus"></i> Yeni Blog Ekle</a>
+

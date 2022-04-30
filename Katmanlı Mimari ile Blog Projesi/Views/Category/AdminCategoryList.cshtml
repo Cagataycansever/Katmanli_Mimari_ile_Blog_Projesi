@@ -1,0 +1,76 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Category>
+@{
+    ViewBag.Title = "AdminCategoryList";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@{ string color = "";}
+@{ string durum = "";}
+<br />
+<h2>Kategori Listesi</h2>
+<br />
+<div class="card">
+
+    <div class="card-body p-0">
+        <table class="table table-condensed projects">
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 5%">#</th>
+                    <th scope="col" style="width: 15%"> Kategori Adı</th>
+                    
+                    <th scope="col" style="width: 18%" class="text-center"> Durum </th>
+                    <th scope="col" style="width: 20%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.CategoryStatus == true)
+                    {
+                        color = "badge bg-success";
+                        durum = "Aktif";
+                    }
+                    if (item.CategoryStatus == false)
+                    {
+                        color = "badge bg-danger";
+                        durum = "Pasif";
+                    }
+
+                    <tr>
+                        <th scope="row">@item.CategoryID</th>
+                        <td>  <a>  @item.CategoryName  </a> <br />  <small>     </small>  </td>
+                       
+                        
+                        <td class="project-state"> <span class="@color">@durum</span></td>
+                        <td class="project-actions text-right">
+                            <a class="btn btn-outline-primary btn-sm" href="/Blog/BlogByCategory/@item.CategoryID"><i class="fas fa-folder"></i> Görüntüle</a>
+                            <a class="btn btn-outline-info btn-sm" href="/Category/EditCategory/@item.CategoryID"><i class="fas fa-pencil-alt"></i> Düzenle</a>
+                            <a class="btn btn-outline-success btn-sm" href="/Category/AktiveCategory/@item.CategoryID"><i class="fas fa-check"></i> Aktif</a>
+                            <a class="btn btn-outline-danger btn-sm" href="/Category/DeleteCategory/@item.CategoryID"><i class="fas fa-trash"></i> Pasif</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<button class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#modal1"><i class="fas fa-plus"></i> Yeni Kategori Ekle</button>
+<div class="modal" id="modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"> <h3 class="modal-title">Kategori Ekleme Paneli</h3></div>
+            <form method="post" action="/Category/AdminCategoryAdd/">
+                <div class="modal-body">
+                    <label>Kategori Adı:</label>
+                    <input type="text" name="CategoryName" class="form-control" />
+                    <br />
+                    <label>Kategori Açıklama:</label>
+                    <input type="text" name="CategoryDescription" class="form-control" />
+                    <br />
+                    <button class="btn btn-outline-success btn-sm"><i class="fas fa-check"></i> Ekle</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+

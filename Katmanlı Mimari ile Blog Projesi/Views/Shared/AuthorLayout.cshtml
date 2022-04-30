@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MVC 5 Blog | Yazar </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+
+    <div class="wrapper">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <a href="../../index3.html" class="brand-link">
+
+                <span class="brand-text font-weight-light">MVC 5 BLOG | YAZAR PANELI</span>
+            </a>
+            <div class="sidebar">
+
+                
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item"><a href="/User" class="nav-link"><i class="nav-icon fas fa-home"></i><p>Anasayfa</p></a></li>
+                        <li class="nav-item"><a href="/User/BlogList" class="nav-link"><i class="nav-icon fas fa-th"></i><p>Bloglarım</p></a></li>
+                        <li class="nav-item"><a href="/Blog" class="nav-link"><i class="nav-icon fas fa-blog"></i><p>Bloglar Hızlı Bakış</p></a></li>
+                        <li class="nav-item"><a href="/User/Logout" class="nav-link"><i class="nav-icon fas fa-sign-out-alt"></i><p>Çıkış Yap</p></a></li>
+
+
+
+
+
+
+                    </ul>
+                </nav>
+            </div>
+
+        </aside>
+        <div class="content-wrapper">
+            <section class="content">
+                @RenderBody()
+            </section>
+        </div>
+
+
+    </div>
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+</body>
+</html>
+
+

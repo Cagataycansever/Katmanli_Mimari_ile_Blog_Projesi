@@ -1,0 +1,36 @@
+﻿@model EntityLayer.Concrete.Author
+@{
+    ViewBag.Title = "EditAuthor";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Blog Güncelleme</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.HiddenFor(x => x.AuthorID)
+    @Html.Label("Adı Soyadı")
+    @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control" })
+    <br />
+    @Html.Label("Fotoğrafı")
+    @Html.TextBoxFor(x => x.AuthorImage, new { @class = "form-control" })
+    <br />
+    @Html.Label("Statüsü")
+    @Html.TextBoxFor(x => x.AuthorTitle, new { @class = "form-control" })
+    <br />
+    @Html.Label("Telefon")
+    @Html.TextBoxFor(x => x.AuthorPhoneNumber, new { @class = "form-control" })
+    <br />
+    @Html.Label("Mail")
+    @Html.TextBoxFor(x => x.AuthorMail, new { @class = "form-control" })
+    <br />
+    @Html.Label("Şifre")
+    @Html.TextBoxFor(x => x.AuthorPassword, new { @class = "form-control" })
+    <br />
+    @Html.Label("Hakkında")
+    @Html.TextAreaFor(x => x.AuthorAbout, 5, 20, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-outline-success btn-sm"><i class="fas fa-check"></i> Güncelle</button>
+</form>
+

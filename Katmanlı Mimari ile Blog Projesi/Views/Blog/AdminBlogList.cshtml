@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+@{
+    ViewBag.Title = "AdminBlogList";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Blog Listesi</h2>
+<br />
+<div class="card">
+    <div class="card-body p-0">
+        <table class="table table-condensed projects">
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 5%">#</th>
+                    <th scope="col" style="width: 15%">Başlık</th>
+                    <th scope="col" style="width: 10%">Kategori</th>
+                    <th scope="col" style="width: 10%">Yazar</th>
+                    <th scope="col" style="width: 10%">Tarih</th>
+                    <th scope="col" style="width: 20%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.BlogID</th>
+                        <td>@item.BlogTitle</td>
+                        <td>@item.Category.CategoryName</td>
+                        <td>@item.Author.AuthorName</td>
+                        <td>@(((DateTime)item.BlogDate).ToString("dd MMM yyyy"))</td>
+                        <td>
+                            <a href="/Blog/BlogDetails/@item.BlogID" class="btn btn-outline-primary btn-sm"><i class="fas fa-folder"></i> Görüntüle</a>
+                            <a href="/Blog/UpdateBlog/@item.BlogID" class="btn btn-outline-success btn-sm"><i class="fas fa-pencil-alt"></i> Güncelle</a>
+                            <a href="/Blog/GetCommentByBlog/@item.BlogID" class="btn btn-outline-dark btn-sm"><i class="fas fa-comment"></i> Yorumlar</a>
+                            <a href="/Blog/DeleteBlog/@item.BlogID" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i> Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        </div>
+    </div>
+    <a href="/Blog/AddBlog" class="btn btn-outline-info btn-sm"><i class="fas fa-plus"></i> Yeni Blog Ekle</a>
+

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Author>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AuthorLayout.cshtml";
+}
+<br />
+<h2>Yazar Anasayfa</h2>
+<br />
+<!DOCTYPE html>
+
+<html>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header p-2">
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item nav-link"><i class="fas fa-user-cog"></i> Ayarlar</li>
+                                </ul>
+                            </div>
+
+                            <div class="card-body">
+                                <div>  
+                                    @Html.Action("Partial1","User")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+

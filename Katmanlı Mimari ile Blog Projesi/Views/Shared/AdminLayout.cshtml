@@ -1,0 +1,81 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MVC 5 Blog | Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+
+    <div class="wrapper">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <a href="../../index3.html" class="brand-link">
+
+                <span class="brand-text font-weight-light">MVC 5 BLOG | ADMIN PANELI</span>
+            </a>
+            <div class="sidebar">
+
+                
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item"><a href="/Blog/AdminBlogList" class="nav-link"><i class="nav-icon fas fa-th"></i><p>Bloglar</p></a></li>
+                        @if (User.IsInRole("A"))
+                        {
+                            <li class="nav-item"><a href="/Blog/AdminBlogList2" class="nav-link"><i class="nav-icon fas fa-blog"></i><p>Bloglar Hızlı Bakış</p></a></li>
+                        }
+                        <li class="nav-item"><a href="/Author/AuthorList" class="nav-link"><i class="nav-icon fas fa-people-arrows"></i><p>Yazarlar</p></a></li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link"> <i class="nav-icon fas fa-comment"></i><p> Yorumlar<i class="right fas fa-angle-left"></i> </p></a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item"><a href="/Comment/AdminCommentListTrue" class="nav-link"> <i class="far fa-circle nav-icon"></i><p>Yayında Olan Yorumlar</p></a></li>
+                                <li class="nav-item"><a href="/Comment/AdminCommentListFalse" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Kaldırılan Yorumlar</p></a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="/Category/AdminCategoryList" class="nav-link"><i class="nav-icon fas fa-bars"></i><p>Kategoriler</p></a></li>
+                        <li class="nav-item"><a href="/About/UpdateAboutInfo" class="nav-link"><i class="nav-icon fas fa-address-card"></i><p>Hakkımızda</p></a></li>
+                        <li class="nav-item"><a href="/Contact/Inbox" class="nav-link"><i class="nav-icon fas fa-envelope-open"></i><p>Mesajlar</p></a></li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link"> <i class="nav-icon fas fa-chart-bar"></i><p> Grafikler<i class="right fas fa-angle-left"></i> </p></a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item"><a href="/Chart/Chart1" class="nav-link"> <i class="far fa-circle nav-icon"></i><p>Pie Grafiği</p></a></li>
+                                <li class="nav-item"><a href="/Chart/Chart2" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Column Grafiği</p></a></li>
+                                <li class="nav-item"><a href="/Chart/Chart3" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Line Grafiği</p></a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-medal"></i><p>Yetkilendirme</p></a></li>
+                        <li class="nav-item"><a href="/User/Logout" class="nav-link"><i class="nav-icon fas fa-sign-out-alt"></i><p>Çıkış Yap</p></a></li>
+
+
+
+
+
+
+                    </ul>
+                </nav>
+            </div>
+
+        </aside>
+        <div class="content-wrapper">
+            <section class="content">
+                @RenderBody()
+            </section>
+        </div>
+
+
+    </div>
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+</body>
+</html>
